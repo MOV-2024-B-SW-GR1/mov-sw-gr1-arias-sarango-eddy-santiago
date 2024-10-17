@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "171136492394",
+    "project_id": "mov-2024b-sw-gr1-esas",
+    "storage_bucket": "mov-2024b-sw-gr1-esas.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:171136492394:android:0305e8a4f1fe9e6523bb13",
+        "android_client_info": {
+          "package_name": "com.example.sw2024bgr1_esas"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAER0wqbZs4qqNbNOj-6GFlSvI4sXIAkkM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

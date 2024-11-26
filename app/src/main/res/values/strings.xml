@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TareaEnClase</string>
+    <string name="saludo">Hola señor robot</string>
+    <string name="string_tarea">HOlaporDerecto</string>
+</resources>

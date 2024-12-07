@@ -1,0 +1,4 @@
+12,Aspirinas,500.0,false,800,Bago,2
+23,Paracetamol,500.0,true,1111,affads,12
+1,Ibuprofeno,200.0,true,5000,Bago,2
+16,Paracetamol,200.0,true,60,Bago,2

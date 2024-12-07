@@ -1,0 +1,3 @@
+2,Gonzaldo el doctorsito,9 de octubre,789456132,01/01/0001
+12,Colita de rana,Mi casa e67-2,456739374,25/12/3542
+56,Reflexion,La colon,12334567,01/01/1999

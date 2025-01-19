@@ -108,6 +108,8 @@ class MainActivity : AppCompatActivity() {
                 intentExplicito.putExtra("nombre", "Adrian")
                 intentExplicito.putExtra("apellido", "Eguez")
                 intentExplicito.putExtra("edad", 34)
+                intentExplicito.putExtra("entrenador",
+                    BEntrenador(1, "Adrian", "Eguez"))
                 callbackContenidoIntentExplicito.launch(intentExplicito)
             }
 
@@ -115,6 +117,13 @@ class MainActivity : AppCompatActivity() {
         botonIrSqlite
             .setOnClickListener {
                 irActividad(ECrudEntrenador::class.java)
+            }
+
+
+        val botonRecylerView = findViewById<Button>(R.id.btn_recycler_view)
+        botonRecylerView
+            .setOnClickListener {
+                irActividad(FRecyclerView::class.java)
             }
 
     }

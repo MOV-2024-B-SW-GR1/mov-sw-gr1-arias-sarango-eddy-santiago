@@ -18,4 +18,22 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.422" />
 
+    <Button
+        android:id="@+id/btn_ir_intent_implicito"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="92dp"
+        android:text="Implicito"
+        app:layout_constraintBottom_toTopOf="@+id/btn_ir_intent_explicito"
+        tools:layout_editor_absoluteX="73dp" />
+
+    <Button
+        android:id="@+id/btn_ir_intent_explicito"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Explicito"
+        app:layout_constraintEnd_toEndOf="@+id/btn_ir_intent_implicito"
+        app:layout_constraintStart_toStartOf="@+id/btn_ir_intent_implicito"
+        tools:layout_editor_absoluteY="234dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

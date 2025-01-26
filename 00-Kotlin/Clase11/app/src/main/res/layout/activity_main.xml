@@ -8,64 +8,90 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/cl_ciclo_vida"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ciclo vida"
-        tools:layout_editor_absoluteX="35dp"
-        tools:layout_editor_absoluteY="315dp" />
-
-    <Button
-        android:id="@+id/btt_ir_list_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="232dp"
-        android:text="List"
-        app:layout_constraintEnd_toEndOf="@+id/cl_ciclo_vida"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/cl_ciclo_vida"
-        app:layout_constraintTop_toBottomOf="@+id/cl_ciclo_vida" />
-
-    <Button
         android:id="@+id/btn_ir_intent_explicito"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="56dp"
+        android:layout_width="99dp"
+        android:layout_height="48dp"
         android:text="explicito"
         app:layout_constraintBottom_toTopOf="@+id/btn_ir_intent_implicito"
-        tools:layout_editor_absoluteX="106dp" />
+        app:layout_constraintEnd_toEndOf="@+id/btn_ir_intent_implicito"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_ir_intent_implicito"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.594" />
 
     <Button
         android:id="@+id/btn_ir_intent_implicito"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="152dp"
+        android:layout_width="99dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="48dp"
         android:text="implicito"
         app:layout_constraintBottom_toTopOf="@+id/cl_ciclo_vida"
-        app:layout_constraintEnd_toEndOf="@+id/btn_ir_intent_explicito"
+        app:layout_constraintEnd_toEndOf="@+id/cl_ciclo_vida"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/btn_ir_intent_explicito" />
+        app:layout_constraintStart_toStartOf="@+id/cl_ciclo_vida" />
+
+    <Button
+        android:id="@+id/btn_google_maps"
+        android:layout_width="217dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="32dp"
+        android:text="G. Maps"
+        app:layout_constraintBottom_toTopOf="@+id/btn_intent_firebase_ui"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/cl_ciclo_vida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:text="Ciclo vida"
+        app:layout_constraintBottom_toTopOf="@+id/btt_ir_list_view"
+        app:layout_constraintEnd_toEndOf="@+id/btt_ir_list_view"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btt_ir_list_view" />
+
+    <Button
+        android:id="@+id/btn_recycler_view"
+        android:layout_width="127dp"
+        android:layout_height="49dp"
+        android:layout_marginBottom="52dp"
+        android:text="RView"
+        app:layout_constraintBottom_toTopOf="@+id/btn_sqlite"
+        app:layout_constraintEnd_toEndOf="@+id/btn_sqlite"
+        app:layout_constraintHorizontal_bias="0.357"
+        app:layout_constraintStart_toStartOf="@+id/btn_sqlite" />
+
+    <Button
+        android:id="@+id/btt_ir_list_view"
+        android:layout_width="99dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="60dp"
+        android:text="List"
+        app:layout_constraintBottom_toTopOf="@+id/btn_recycler_view"
+        app:layout_constraintEnd_toEndOf="@+id/btn_recycler_view"
+        app:layout_constraintHorizontal_bias="0.464"
+        app:layout_constraintStart_toStartOf="@+id/btn_recycler_view" />
 
     <Button
         android:id="@+id/btn_sqlite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
+        android:layout_marginBottom="40dp"
         android:text="Boton SQLite"
-        app:layout_constraintBottom_toBottomOf="@+id/cl_ciclo_vida"
-        app:layout_constraintStart_toEndOf="@+id/cl_ciclo_vida"
-        app:layout_constraintTop_toTopOf="@+id/cl_ciclo_vida"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintBottom_toTopOf="@+id/btn_google_maps"
+        app:layout_constraintEnd_toEndOf="@+id/btn_google_maps"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="@+id/btn_google_maps" />
 
     <Button
-        android:id="@+id/btn_recycler_view"
+        android:id="@+id/btn_intent_firebase_ui"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="116dp"
-        android:text="RView"
-        app:layout_constraintBottom_toTopOf="@+id/btn_sqlite"
-        app:layout_constraintEnd_toEndOf="@+id/btn_sqlite"
-        app:layout_constraintHorizontal_bias="0.531"
-        app:layout_constraintStart_toStartOf="@+id/btn_sqlite" />
+        android:layout_marginBottom="28dp"
+        android:text="Auth"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btn_google_maps"
+        app:layout_constraintStart_toStartOf="@+id/btn_google_maps" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AplicacionExamen</string>
+    <string name="medicamentos">Medicamentos</string>
+    <string name="fecha_de_apertura_dd_mm_yyyy">Fecha de Apertura (dd/MM/yyyy)</string>
+    <string name="guardar">Guardar</string>
+    <string name="txt_button_crear_farmacia">Crea nueva farmacia</string>
+</resources>

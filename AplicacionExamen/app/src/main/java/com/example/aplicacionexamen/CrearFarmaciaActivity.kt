@@ -24,6 +24,8 @@ class CrearFarmaciaActivity : AppCompatActivity() {
         val nombreEditText = findViewById<EditText>(R.id.editTextNombre)
         val direccionEditText = findViewById<EditText>(R.id.editTextDireccion)
         val telefonoEditText = findViewById<EditText>(R.id.editTextTelefono)
+        val latitudEditText = findViewById<EditText>(R.id.editTextLatitud)
+        val longitudEditText = findViewById<EditText>(R.id.editTextLongitud)
         val guardarButton = findViewById<Button>(R.id.buttonGuardar)
 
         // Inicializar el gestorSQL
@@ -39,10 +41,26 @@ class CrearFarmaciaActivity : AppCompatActivity() {
             val direccion = direccionEditText.text.toString().trim()
             val telefono = telefonoEditText.text.toString().trim()
             val fechaApertura = fechaAperturaTextView.text.toString().trim()
+            val latitudText = latitudEditText.text.toString().trim()
+            val longitudText = longitudEditText.text.toString().trim()
 
             // Validar los campos antes de guardar
-            if (nombre.isEmpty() || direccion.isEmpty() || telefono.isEmpty() || fechaApertura.isEmpty()) {
+            if (nombre.isEmpty() || direccion.isEmpty() || telefono.isEmpty() || fechaApertura.isEmpty() || latitudText.isEmpty() || longitudText.isEmpty()) {
                 Toast.makeText(this, "Por favor completa todos los campos.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val latitud: Double = try {
+                latitudText.toDouble()
+            } catch (e: NumberFormatException) {
+                Toast.makeText(this, "Ingrese un valor numérico para la latitud", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val longitud: Double = try {
+                longitudText.toDouble()
+            } catch (e: NumberFormatException) {
+                Toast.makeText(this, "Ingrese un valor numérico para la longitud", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -61,7 +79,7 @@ class CrearFarmaciaActivity : AppCompatActivity() {
 
             try {
                 // Intentar guardar la farmacia
-                val id = gestorSQL.addFarmacia(nombre, direccion, telefono, fechaAlmacenamiento)
+                val id = gestorSQL.addFarmacia(nombre, direccion, telefono, fechaAlmacenamiento, latitud, longitud)
                 if (id > 0) {
                     Log.d("CrearFarmaciaActivity", "Farmacia creada con ID: $id")
                     Toast.makeText(this, "Farmacia creada con éxito", Toast.LENGTH_SHORT).show()

@@ -8,14 +8,18 @@ data class Farmacia(
     var nombre: String,
     var direccion: String,
     var telefono: String,
-    var fechaApertura: String
+    var fechaApertura: String,
+    var latitud: Double,
+    var longitud: Double
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
         parcel.readString() ?: "",
         parcel.readString() ?: "",
         parcel.readString() ?: "",
-        parcel.readString() ?: ""
+        parcel.readString() ?: "",
+        parcel.readDouble(),
+        parcel.readDouble()
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -24,6 +28,8 @@ data class Farmacia(
         parcel.writeString(direccion)
         parcel.writeString(telefono)
         parcel.writeString(fechaApertura)
+        parcel.writeDouble(latitud)
+        parcel.writeDouble(longitud)
     }
 
     override fun describeContents(): Int {

@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <!-- Añadir consultas para aplicaciones externas aquí, fuera del bloque application -->
-    <queries>
 
-        <!-- Intent para la app de Google Maps -->
-        <intent>
-            <action android:name="android.intent.action.VIEW" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
-            <data android:scheme="geo" />
-        </intent>
-    </queries>
 
     <application
         android:allowBackup="true"
@@ -22,9 +17,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AplicacionExamen"
         tools:targetApi="31">
-        <activity
-            android:name=".item_farmacia"
-            android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
         <activity
             android:name=".MedicamentoActivity"
             android:exported="false" />
@@ -34,6 +30,9 @@
         <activity
             android:name=".CrearFarmaciaActivity"
             android:exported="false" />
+        <activity
+            android:name=".GGoogleMaps"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

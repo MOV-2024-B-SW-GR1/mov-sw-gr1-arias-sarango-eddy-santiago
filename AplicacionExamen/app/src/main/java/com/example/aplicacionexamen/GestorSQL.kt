@@ -18,7 +18,9 @@ class GestorSQL(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, nul
                 nombre TEXT,
                 direccion TEXT,
                 telefono TEXT,
-                fechaApertura DATE
+                fechaApertura DATE,
+                latitud REAL,
+                longitud REAL
             )
         """
 
@@ -50,13 +52,15 @@ class GestorSQL(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, nul
     }
 
     // CRUD Operaciones para Farmacia
-    fun addFarmacia(nombre: String, direccion: String, telefono: String, fechaApertura: String): Long {
+    fun addFarmacia(nombre: String, direccion: String, telefono: String, fechaApertura: String, latitud: Double, longitud: Double): Long {
         val db = this.writableDatabase
         val values = ContentValues().apply {
             put("nombre", nombre)
             put("direccion", direccion)
             put("telefono", telefono)
             put("fechaApertura", fechaApertura)
+            put("latitud", latitud)
+            put("longitud", longitud)
         }
         val id = db.insert("Farmacia", null, values)
 
@@ -71,7 +75,7 @@ class GestorSQL(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, nul
 
     fun getFarmacia(): MutableList<Farmacia> {
         val db = this.readableDatabase
-        val projection = arrayOf("id", "nombre", "direccion", "telefono", "fechaApertura")
+        val projection = arrayOf("id", "nombre", "direccion", "telefono", "fechaApertura", "latitud", "longitud")
         val cursor = db.query("Farmacia", projection, null, null, null, null, null)
         val farmacias = mutableListOf<Farmacia>()
         with(cursor) {
@@ -81,21 +85,24 @@ class GestorSQL(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, nul
                 val direccion = getString(getColumnIndexOrThrow("direccion"))
                 val telefono = getString(getColumnIndexOrThrow("telefono"))
                 val fechaApertura = getString(getColumnIndexOrThrow("fechaApertura"))
-
-                farmacias.add(Farmacia(id, nombre, direccion, telefono, fechaApertura))
+                val latitud = getDouble(getColumnIndexOrThrow("latitud"))
+                val longitud = getDouble(getColumnIndexOrThrow("longitud"))
+                farmacias.add(Farmacia(id, nombre, direccion, telefono, fechaApertura, latitud, longitud))
             }
         }
         cursor.close()
         return farmacias
     }
 
-    fun updateFarmacia(id: Int, nombre: String, direccion: String, telefono: String, fechaApertura: String): Int {
+    fun updateFarmacia(id: Int, nombre: String, direccion: String, telefono: String, fechaApertura: String, latitud: Double, longitud: Double): Int {
         val db = this.writableDatabase
         val values = ContentValues().apply {
             put("nombre", nombre)
             put("direccion", direccion)
             put("telefono", telefono)
             put("fechaApertura", fechaApertura)
+            put("latitud", latitud)
+            put("longitud", longitud)
         }
         return db.update("Farmacia", values, "id=?", arrayOf(id.toString()))
     }

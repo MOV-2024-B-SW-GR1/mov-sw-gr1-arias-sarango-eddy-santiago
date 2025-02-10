@@ -10,4 +10,8 @@
         android:id="@+id/view_medicamentos"
         android:title="Ver Medicamentos" />
 
+    <item
+        android:id="@+id/view_location"
+        android:title="Ver Ubicación" />
+
 </menu>

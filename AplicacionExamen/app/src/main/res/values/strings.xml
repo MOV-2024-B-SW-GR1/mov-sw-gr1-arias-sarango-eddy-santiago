@@ -4,4 +4,6 @@
     <string name="fecha_de_apertura_dd_mm_yyyy">Fecha de Apertura (dd/MM/yyyy)</string>
     <string name="guardar">Guardar</string>
     <string name="txt_button_crear_farmacia">Crea nueva farmacia</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="ubicaci_n_de_la_farmacia">Ubicación de la farmacia</string>
 </resources>

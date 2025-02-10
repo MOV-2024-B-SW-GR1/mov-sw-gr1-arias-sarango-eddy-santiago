@@ -1,6 +1,7 @@
 package com.example.aplicacionexamen
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.ContextMenu
@@ -75,17 +76,33 @@ class MainActivity : AppCompatActivity(), EditFarmaciaDialogFragment.EditFarmaci
 
     override fun onContextItemSelected(item: MenuItem): Boolean {
         val info = item.menuInfo as AdapterView.AdapterContextMenuInfo
+        val farmacia = gestorSQL.getFarmacia()[info.position]
+        Log.d("MainActivity", "Context item selected: ${item.title}, Farmacia: ${farmacia.nombre}")
+
         when (item.itemId) {
             R.id.edit -> {
-                val farmacia = gestorSQL.getFarmacia()[info.position]
+                Log.d("MainActivity", "Edit option selected")
                 val dialog = EditFarmaciaDialogFragment.newInstance(farmacia)
                 dialog.show(supportFragmentManager, "EditFarmaciaDialogFragment")
             }
             R.id.delete -> {
-                gestorSQL.deleteFarmacia(gestorSQL.getFarmacia()[info.position].id)
+                Log.d("MainActivity", "Delete option selected")
+                gestorSQL.deleteFarmacia(farmacia.id)
                 updateListView()
             }
-            R.id.view_medicamentos -> viewMedicamentos(info.position)
+            R.id.view_medicamentos -> {
+                Log.d("MainActivity", "View medicamentos option selected")
+                viewMedicamentos(info.position)
+            }
+            R.id.view_location -> {
+                Log.d("MainActivity", "View location selected for: ${farmacia.nombre}")
+                val intent = Intent(this, GGoogleMaps::class.java).apply {
+                    putExtra("LATITUD", farmacia.latitud)
+                    putExtra("LONGITUD", farmacia.longitud)
+                    putExtra("NOMBRE_TIENDA", farmacia.nombre)
+                }
+                startActivity(intent)
+            }
             else -> return super.onContextItemSelected(item)
         }
         return true
@@ -106,7 +123,7 @@ class MainActivity : AppCompatActivity(), EditFarmaciaDialogFragment.EditFarmaci
     }
 
     override fun onDialogPositiveClick(dialog: DialogFragment, farmacia: Farmacia) {
-        gestorSQL.updateFarmacia(farmacia.id, farmacia.nombre, farmacia.direccion, farmacia.telefono, farmacia.fechaApertura)
+        gestorSQL.updateFarmacia(farmacia.id, farmacia.nombre, farmacia.direccion, farmacia.telefono, farmacia.fechaApertura, farmacia.latitud, farmacia.longitud)
         updateListView()
     }
 

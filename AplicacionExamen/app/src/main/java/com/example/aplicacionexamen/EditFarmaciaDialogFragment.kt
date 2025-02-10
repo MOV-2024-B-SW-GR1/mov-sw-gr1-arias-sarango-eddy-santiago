@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
-import com.example.aplicacionexamen.Farmacia
 
 class EditFarmaciaDialogFragment : DialogFragment() {
 
@@ -22,7 +21,7 @@ class EditFarmaciaDialogFragment : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         listener = activity as EditFarmaciaDialogListener
-        farmacia = arguments?.getParcelable("farmacia") ?: Farmacia(0, "", "", "", "")
+        farmacia = arguments?.getParcelable<Farmacia>("farmacia") ?: Farmacia(0, "", "", "", "", 0.0, 0.0)
 
         val builder = AlertDialog.Builder(requireActivity())
         val inflater = requireActivity().layoutInflater
@@ -32,11 +31,15 @@ class EditFarmaciaDialogFragment : DialogFragment() {
         val direccionEditText = view.findViewById<EditText>(R.id.editTextDireccion)
         val telefonoEditText = view.findViewById<EditText>(R.id.editTextTelefono)
         val fechaAperturaEditText = view.findViewById<EditText>(R.id.editTextFechaApertura)
+        val latitudEditText = view.findViewById<EditText>(R.id.editTextLatitud)
+        val longitudEditText = view.findViewById<EditText>(R.id.editTextLongitud)
 
         nombreEditText.setText(farmacia.nombre)
         direccionEditText.setText(farmacia.direccion)
         telefonoEditText.setText(farmacia.telefono)
         fechaAperturaEditText.setText(farmacia.fechaApertura)
+        latitudEditText.setText(farmacia.latitud.toString())
+        longitudEditText.setText(farmacia.longitud.toString())
 
         builder.setView(view)
             .setTitle("Editar Farmacia")
@@ -45,6 +48,8 @@ class EditFarmaciaDialogFragment : DialogFragment() {
                 farmacia.direccion = direccionEditText.text.toString()
                 farmacia.telefono = telefonoEditText.text.toString()
                 farmacia.fechaApertura = fechaAperturaEditText.text.toString()
+                farmacia.latitud = latitudEditText.text.toString().toDoubleOrNull() ?: 0.0
+                farmacia.longitud = longitudEditText.text.toString().toDoubleOrNull() ?: 0.0
                 listener.onDialogPositiveClick(this, farmacia)
             }
             .setNegativeButton("Cancelar") { _, _ ->
